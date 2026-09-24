@@ -54,9 +54,9 @@ directory, and the framework cannot be blamed for anything visible.
 The CLI tracks which of those files came from the scaffold and at what version:
 
 ```sh
-npx nimbus-docs outdated        # starter files behind their tag, registry components behind
-npx nimbus-docs diff <file>     # what upstream changed vs what we changed
-npx nimbus-docs check           # build-free preflight: env, structure, authoring, types
+pnpm exec nimbus-docs outdated    # starter files behind their tag, registry components behind
+pnpm exec nimbus-docs diff <file> # what upstream changed vs what we changed
+pnpm exec nimbus-docs check       # build-free preflight: env, structure, authoring, types
 ```
 
 Ten scaffold files are modified, so an upgrade to any of them is a merge and not an apply:
@@ -811,7 +811,7 @@ touches `WebSocketPair`, and the shim never routes an upgrade to it.
 
 Output lands in `public/playground/<slug>/` and is gitignored. `predev` and `prebuild` regenerate
 it, so it cannot go stale, but note it bundles the library's **build output**, so a change to
-`src/` needs `npm run build` at the repo root before it reaches a playground.
+`src/` needs `pnpm run build` at the repo root before it reaches a playground.
 
 The iframe points at `/playground/<slug>/index.html`, spelled out in full. Astro's dev server does
 not resolve a directory request under `public/` to its index, so the tidier-looking
